@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar | Patas Unidas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --azul: #6FA7A2;
+    --verde: #355843;
+    --verde-claro: #8AA58A;
+    --escuro: #263F32;
+    --marrom: #987052;
+    --fundo: #DCE6D8;
+    --creme: #EAE4D7;
+    --menta: #D5E6E1;
+    --texto: #304638;
+    --suave: #68776B;
+    --borda: #C6D1C5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    background: var(--escuro);
+    color: var(--creme);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 17px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--azul);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.menu a {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--creme);
+}
+
+.menu a:hover,
+.menu a.ativo {
+    color: #A8D0C4;
+}
+
+.menu .entrar {
+    background: var(--azul);
+    color: var(--escuro);
+    padding: 11px 18px;
+    border-radius: 30px;
+}
+
+.menu-mobile {
+    display: none;
+    background: var(--verde);
+    color: var(--creme);
+    border: 0;
+    padding: 9px 13px;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+main {
+    min-height: calc(100vh - 150px);
+    padding: 48px 20px 60px;
+    background:
+        radial-gradient(ellipse at top right, #C6D9C4 0%, transparent 45%),
+        var(--fundo);
+}
+
+.layout {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+.apresentacao {
+    background: var(--escuro);
+    color: var(--creme);
+    border-radius: 32px;
+    padding: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 535px;
+    overflow: hidden;
+    position: relative;
+}
+
+.apresentacao::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: #6FA7A21F;
+    right: -90px;
+    top: 160px;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: var(--verde);
+    color: #B7D9CD;
+    padding: 9px 14px;
+    border-radius: 25px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.apresentacao h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(30px, 3.5vw, 43px);
+    line-height: 1.2;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.apresentacao h1 span {
+    color: var(--azul);
+}
+
+.apresentacao p {
+    color: #D0DCCE;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.ilustracao {
+    text-align: center;
+    padding-top: 20px;
+    position: relative;
+}
+
+.ilustracao .pet {
+    display: block;
+    font-size: 105px;
+    margin-bottom: 15px;
+}
+
+.frase {
+    background: var(--verde);
+    color: #D7E6D8;
+    border-radius: 18px;
+    padding: 15px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.login-card {
+    background: #D2E0D0;
+    border: 1px solid var(--borda);
+    border-radius: 32px;
+    padding: 38px;
+    box-shadow: 0 15px 35px #263F3210;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: var(--escuro);
+    margin-bottom: 8px;
+}
+
+.introducao {
+    color: var(--suave);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.mensagem {
+    display: none;
+    background: #BFD8C3;
+    color: var(--escuro);
+    border-radius: 14px;
+    padding: 13px;
+    margin-bottom: 17px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--verde);
+    margin-bottom: 8px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--borda);
+    border-radius: 15px;
+    background: var(--creme);
+    color: var(--texto);
+    outline: none;
+    font: inherit;
+    transition: .2s;
+}
+
+.campo input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px #6FA7A222;
+}
+
+.campo input::placeholder {
+    color: #8B968B;
+}
+
+.opcoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: -3px 0 23px;
+    font-size: 12px;
+}
+
+.lembrar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--suave);
+}
+
+.lembrar input {
+    accent-color: var(--verde);
+}
+
+.opcoes a,
+.criar-conta a {
+    color: var(--marrom);
+    font-weight: 900;
+}
+
+.botao {
+    width: 100%;
+    border: none;
+    border-radius: 16px;
+    padding: 15px;
+    background: var(--verde);
+    color: var(--creme);
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.botao:hover {
+    background: var(--escuro);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px #263F321F;
+}
+
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    color: var(--suave);
+    font-size: 12px;
+}
+
+.divisor::before,
+.divisor::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--borda);
+}
+
+.criar-conta {
+    text-align: center;
+    color: var(--suave);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+footer {
+    background: var(--escuro);
+    color: var(--creme);
+    padding: 25px;
+}
+
+.rodape {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.rodape p {
+    font-size: 12px;
+    color: #C3D0C2;
+    line-height: 1.8;
+}
+
+@media (max-width: 800px) {
+    .layout {
+        grid-template-columns: 1fr;
+        max-width: 550px;
+    }
+
+    .apresentacao {
+        min-height: auto;
+        padding: 30px;
+    }
+
+    .ilustracao .pet {
+        font-size: 80px;
+    }
+
+    .login-card {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 15px 18px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--escuro);
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .menu.aberto {
+        display: flex;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+
+    .menu .entrar {
+        text-align: center;
+    }
+
+    main {
+        padding: 25px 14px 40px;
+    }
+
+    .apresentacao,
+    .login-card {
+        padding: 25px 20px;
+        border-radius: 25px;
+    }
+
+    .apresentacao h1 {
+        font-size: 32px;
+    }
+
+    .login-card h2 {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">🐾 Patas <span>Unidas</span></a>
+
+        <button class="menu-mobile" id="menuMobile" aria-label="Abrir menu">☰</button>
+
+        <div class="menu" id="menu">
+            <a href="index.html">Início</a>
+            <a href="adocao.html">Adoção</a>
+            <a href="perdidos.html">Perdidos</a>
+            <a href="encontrados.html">Encontrados</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="login.html" class="ativo entrar">Entrar</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="layout">
+
+        <section class="apresentacao">
+            <div>
+                <span class="etiqueta">🐾 QUE BOM TER VOCÊ AQUI</span>
+
+                <h1>Seu lugar na comunidade do <span>bem.</span></h1>
+
+                <p>
+                    Entre na sua conta para acompanhar suas informações
+                    e participar da missão de conectar animais a novos lares
+                    e reunir famílias.
+                </p>
+            </div>
+
+            <div class="ilustracao">
+                <span class="pet">🐶</span>
+                <div class="frase">
+                    Mais carinho, mais cuidado e mais animais felizes. 💚
+                </div>
+            </div>
+        </section>
+
+        <section class="login-card">
+            <h2>Bem-vindo de volta!</h2>
+
+            <p class="introducao">
+                Informe seus dados para acessar sua conta.
+            </p>
+
+            <div class="mensagem" id="mensagem" role="status"></div>
+
+            <form id="formLogin">
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="seuemail@exemplo.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <div class="opcoes">
+                    <label class="lembrar">
+                        <input type="checkbox" id="lembrar">
+                        Lembrar meu e-mail
+                    </label>
+
+                    <a href="#" id="esqueciSenha">Esqueci minha senha</a>
+                </div>
+
+                <button type="submit" class="botao">Entrar na minha conta ♥</button>
+            </form>
+
+            <form id="formAtualizarSenha" style="display:none">
+                <div class="campo">
+                    <label for="novaSenha">Nova senha</label>
+                    <input type="password" id="novaSenha" minlength="6"
+                           autocomplete="new-password" required>
+                </div>
+                <div class="campo">
+                    <label for="confirmarNovaSenha">Confirme a nova senha</label>
+                    <input type="password" id="confirmarNovaSenha" minlength="6"
+                           autocomplete="new-password" required>
+                </div>
+                <button type="submit" class="botao">Salvar nova senha</button>
+            </form>
+
+            <div class="divisor">AINDA NÃO TEM CONTA?</div>
+
+            <p class="criar-conta">
+                Faça parte dessa rede de cuidado.
+                <a href="cadastro.html">Criar minha conta</a>
+            </p>
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    <div class="rodape">
+        <div>
+            <a href="index.html" class="logo">🐾 Patas <span>Unidas</span></a>
+            <p>© <span id="ano"></span> Patas Unidas. Todos os direitos reservados.</p>
+        </div>
+
+        <p>Feito com 💚 para ajudar os animais.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="supabase-app.js"></script>
+<script>
+const menuMobile = document.getElementById("menuMobile");
+const menu = document.getElementById("menu");
+
+menuMobile.addEventListener("click", function () {
+    menu.classList.toggle("aberto");
+});
+
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+const formLogin = document.getElementById("formLogin");
+const mensagem = document.getElementById("mensagem");
+
+formLogin.addEventListener("submit", async function (evento) {
+    evento.preventDefault();
+
+    const botao = formLogin.querySelector('[type="submit"]');
+    botao.disabled = true;
+
+    try {
+        const { error } = await PatasApp.getClient().auth.signInWithPassword({
+            email: document.getElementById("email").value.trim(),
+            password: document.getElementById("senha").value
+        });
+
+        if (error) {
+            throw error;
+        }
+
+        window.location.href = "adocao.html#gerenciar";
+    } catch (error) {
+        PatasApp.showMessage(mensagem, PatasApp.errorMessage(error), true);
+    } finally {
+        botao.disabled = false;
+    }
+});
+
+document.getElementById("esqueciSenha").addEventListener("click", async function (evento) {
+    evento.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    if (!email) {
+        PatasApp.showMessage(mensagem, "Informe seu e-mail para receber o link de recuperação.", true);
+        document.getElementById("email").focus();
+        return;
+    }
+
+    try {
+        const redirectTo = window.location.origin + window.location.pathname + "?recovery=1";
+        const { error } = await PatasApp.getClient().auth.resetPasswordForEmail(
+            email,
+            { redirectTo: redirectTo }
+        );
+        if (error) {
+            throw error;
+        }
+        PatasApp.showMessage(mensagem, "Se o e-mail estiver cadastrado, você receberá um link para redefinir a senha.", false);
+    } catch (error) {
+        PatasApp.showMessage(mensagem, PatasApp.errorMessage(error), true);
+    }
+});
+
+const formAtualizarSenha = document.getElementById("formAtualizarSenha");
+if (new URLSearchParams(window.location.search).get("recovery") === "1") {
+    formLogin.style.display = "none";
+    formAtualizarSenha.style.display = "block";
+    document.querySelector(".opcoes").style.display = "none";
+    document.querySelector(".introducao").textContent = "Escolha uma nova senha para sua conta.";
+}
+
+formAtualizarSenha.addEventListener("submit", async function (evento) {
+    evento.preventDefault();
+    const novaSenha = document.getElementById("novaSenha").value;
+    const confirmarSenha = document.getElementById("confirmarNovaSenha").value;
+    if (novaSenha !== confirmarSenha) {
+        PatasApp.showMessage(mensagem, "As senhas não são iguais.", true);
+        return;
+    }
+
+    try {
+        const { error } = await PatasApp.getClient().auth.updateUser({
+            password: novaSenha
+        });
+        if (error) {
+            throw error;
+        }
+        PatasApp.showMessage(mensagem, "Senha atualizada. Você já pode entrar com a nova senha.", false);
+        formAtualizarSenha.reset();
+        formAtualizarSenha.style.display = "none";
+        formLogin.style.display = "block";
+    } catch (error) {
+        PatasApp.showMessage(mensagem, PatasApp.errorMessage(error), true);
+    }
+});
+
+const emailLembrado = localStorage.getItem("patas-email");
+if (emailLembrado) {
+    document.getElementById("email").value = emailLembrado;
+    document.getElementById("lembrar").checked = true;
+}
+document.getElementById("lembrar").addEventListener("change", function () {
+    const email = document.getElementById("email").value.trim();
+    if (this.checked && email) {
+        localStorage.setItem("patas-email", email);
+    } else if (!this.checked) {
+        localStorage.removeItem("patas-email");
+    }
+});
+document.getElementById("email").addEventListener("change", function () {
+    if (document.getElementById("lembrar").checked) {
+        localStorage.setItem("patas-email", this.value.trim());
+    }
+});
+</script>
+
+</body>
+</html>

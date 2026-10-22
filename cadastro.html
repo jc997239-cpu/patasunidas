@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#263F32">
+<title>Criar conta | Patas Unidas</title>
+
+<style>
+:root {
+    --forest: #263F32;
+    --green: #355843;
+    --sage: #8AA58A;
+    --teal: #6FA7A2;
+    --brown: #987052;
+    --cream: #EAE4D7;
+    --background: #DCE6D8;
+    --mint: #D5E6E1;
+    --border: #C6D1C5;
+    --muted: #68776B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--forest);
+    background:
+        radial-gradient(ellipse at top left, #C9DDD1 0%, transparent 48%),
+        linear-gradient(135deg, var(--background), var(--cream));
+}
+
+/* CABEÇALHO */
+
+header {
+    width: 100%;
+    background: var(--forest);
+    border-bottom: 1px solid rgba(234, 228, 215, 0.12);
+}
+
+.header-content {
+    max-width: 1240px;
+    min-height: 82px;
+    padding: 18px 30px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.logo-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    background: rgba(111, 167, 162, 0.18);
+    border: 1px solid rgba(111, 167, 162, 0.35);
+    border-radius: 15px;
+    font-size: 23px;
+}
+
+.logo span {
+    color: var(--teal);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a {
+    color: #D5E6D1;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--teal);
+}
+
+nav .login-link {
+    padding: 11px 19px;
+    border: 1px solid rgba(234, 228, 215, 0.35);
+    border-radius: 30px;
+}
+
+/* ÁREA PRINCIPAL */
+
+main {
+    width: 100%;
+    max-width: 1180px;
+    padding: 55px 25px 65px;
+    margin: auto;
+}
+
+.breadcrumb {
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.breadcrumb a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-card {
+    display: grid;
+    grid-template-columns: 0.86fr 1.14fr;
+    overflow: hidden;
+    border: 1px solid rgba(53, 88, 67, 0.12);
+    border-radius: 30px;
+    background: var(--cream);
+    box-shadow: 0 24px 70px rgba(38, 63, 50, 0.14);
+}
+
+/* PAINEL LATERAL */
+
+.intro-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 50px 38px;
+    color: var(--cream);
+    background:
+        radial-gradient(circle at 95% 10%,
+        rgba(111, 167, 162, 0.2), transparent 35%),
+        linear-gradient(150deg, var(--green), var(--forest) 80%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.intro-panel::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -120px;
+    bottom: 100px;
+    border: 1px solid rgba(213, 230, 225, 0.12);
+    border-radius: 50%;
+}
+
+.intro-panel::after {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    right: -85px;
+    bottom: 135px;
+    border: 1px solid rgba(213, 230, 225, 0.12);
+    border-radius: 50%;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #B9D8C9;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    font-weight: 800;
+    margin-bottom: 23px;
+}
+
+.eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--teal);
+    border-radius: 50%;
+}
+
+.intro-panel h1 {
+    max-width: 350px;
+    font-size: clamp(30px, 3.4vw, 43px);
+    line-height: 1.13;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+}
+
+.intro-panel h1 span {
+    color: #A9C9AD;
+}
+
+.intro-text {
+    color: #D0DFD0;
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 340px;
+}
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: #E0E9DC;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.benefit-icon {
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: rgba(138, 165, 138, 0.17);
+    border: 1px solid rgba(213, 230, 225, 0.12);
+    font-size: 18px;
+}
+
+.quote {
+    position: relative;
+    z-index: 1;
+    padding-top: 24px;
+    border-top: 1px solid rgba(234, 228, 215, 0.16);
+    color: #BBD1C0;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.quote strong {
+    display: block;
+    margin-top: 9px;
+    color: var(--cream);
+}
+
+/* FORMULÁRIO */
+
+.form-panel {
+    padding: 48px 45px;
+}
+
+.form-top {
+    margin-bottom: 30px;
+}
+
+.form-top .mini-label {
+    color: var(--brown);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.7px;
+    margin-bottom: 11px;
+}
+
+.form-top h2 {
+    color: var(--forest);
+    font-size: 31px;
+    letter-spacing: -1px;
+    margin-bottom: 9px;
+}
+
+.form-top p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 19px 15px;
+}
+
+.field {
+    min-width: 0;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--forest);
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.field input,
+.field select {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    color: var(--forest);
+    background: var(--mint);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input::placeholder {
+    color: #7D9183;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 4px rgba(111, 167, 162, 0.17);
+}
+
+.field select {
+    cursor: pointer;
+}
+
+.password-note {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 23px 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.terms input {
+    margin-top: 3px;
+    accent-color: var(--green);
+    flex-shrink: 0;
+}
+
+.terms a {
+    color: var(--green);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.submit-button {
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 15px;
+    color: var(--cream);
+    background: linear-gradient(100deg, var(--green), var(--forest));
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(38, 63, 50, 0.16);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(38, 63, 50, 0.22);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.message {
+    display: none;
+    margin-top: 17px;
+    padding: 14px 16px;
+    border-radius: 13px;
+    font-size: 12px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.message.success {
+    display: block;
+    background: #D5E6D1;
+    color: var(--forest);
+    border: 1px solid var(--sage);
+}
+
+.message.error {
+    display: block;
+    background: #EAE0D1;
+    color: #68482F;
+    border: 1px solid #C5A486;
+}
+
+.form-footer {
+    margin-top: 25px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.form-footer a {
+    color: var(--green);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.security-note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* RODAPÉ */
+
+footer {
+    padding: 0 20px 28px;
+    color: #68776B;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .header-content {
+        padding: 16px 22px;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    main {
+        padding: 35px 18px 45px;
+    }
+
+    .intro-panel {
+        padding: 38px 28px;
+    }
+
+    .form-panel {
+        padding: 38px 28px;
+    }
+
+    .intro-panel h1 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 700px) {
+    .header-content {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px 19px;
+    }
+
+    .signup-card {
+        grid-template-columns: 1fr;
+        border-radius: 23px;
+    }
+
+    .intro-panel {
+        padding: 32px 28px;
+        gap: 25px;
+    }
+
+    .intro-panel h1 {
+        max-width: 480px;
+        font-size: 34px;
+    }
+
+    .intro-text {
+        max-width: 480px;
+    }
+
+    .benefits {
+        gap: 12px;
+    }
+
+    .quote {
+        padding-top: 17px;
+    }
+
+    .form-panel {
+        padding: 32px 25px;
+    }
+
+    .form-top h2 {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 420px) {
+    main {
+        padding: 24px 12px 35px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .intro-panel,
+    .form-panel {
+        padding: 27px 20px;
+    }
+
+    .intro-panel h1 {
+        font-size: 30px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <a class="logo" href="index.html">
+            <span class="logo-icon">🐾</span>
+            <span>Patas <span>Unidas</span></span>
+        </a>
+
+        <nav aria-label="Menu principal">
+            <a href="index.html">Início</a>
+            <a href="adocao.html">Adoção</a>
+            <a href="perdidos.html">Perdidos</a>
+            <a href="encontrados.html">Encontrados</a>
+            <a class="login-link" href="login.html">Entrar</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="breadcrumb">
+        <a href="index.html">Início</a> / Criar conta
+    </div>
+
+    <section class="signup-card">
+
+        <aside class="intro-panel">
+            <div>
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    Conexões que transformam vidas
+                </div>
+
+                <h1>
+                    Um pequeno gesto.
+                    <span>Uma grande história.</span>
+                </h1>
+
+                <p class="intro-text">
+                    Junte-se ao Patas Unidas e ajude a transformar
+                    a vida de animais que precisam de cuidado,
+                    proteção e um lar cheio de amor.
+                </p>
+            </div>
+
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">🏡</div>
+                    <div>
+                        <strong>Novos lares</strong><br>
+                        Ajude animais a encontrarem uma família.
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">🐕</div>
+                    <div>
+                        <strong>Reencontros</strong><br>
+                        Colabore na divulgação de animais perdidos.
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">💚</div>
+                    <div>
+                        <strong>Uma comunidade</strong><br>
+                        Faça parte de uma rede de cuidado animal.
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote">
+                "O amor por um animal pode mudar uma vida.
+                A sua ajuda pode aproximar esse encontro."
+                <strong>Equipe Patas Unidas 🐾</strong>
+            </div>
+        </aside>
+
+        <section class="form-panel">
+            <div class="form-top">
+                <div class="mini-label">Bem-vindo à comunidade</div>
+                <h2>Crie sua conta</h2>
+                <p>
+                    Preencha seus dados abaixo para fazer parte
+                    dessa corrente de cuidado e amor.
+                </p>
+            </div>
+
+            <form id="formCadastro">
+                <div class="form-grid">
+
+                    <div class="field full">
+                        <label for="nome">Nome completo</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Como podemos chamar você?"
+                            autocomplete="name"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="field full">
+                        <label for="email">E-mail</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="voce@exemplo.com"
+                            autocomplete="email"
+                            maxlength="150"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="telefone">Telefone</label>
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            placeholder="(00) 00000-0000"
+                            autocomplete="tel"
+                            maxlength="20"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="cidade">Cidade</label>
+                        <input
+                            type="text"
+                            id="cidade"
+                            name="cidade"
+                            placeholder="Sua cidade"
+                            autocomplete="address-level2"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="field full">
+                        <label for="tipo">Como deseja participar?</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Escolha uma opção</option>
+                            <option value="adotante">Quero adotar um animal</option>
+                            <option value="tutor">Sou tutor de um animal</option>
+                            <option value="voluntario">Quero ser voluntário</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="senha">Criar senha</label>
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Mínimo de 6 caracteres"
+                            minlength="6"
+                            maxlength="128"
+                            autocomplete="new-password"
+                            required
+                        >
+                        <p class="password-note">Use pelo menos 6 caracteres.</p>
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmar">Confirmar senha</label>
+                        <input
+                            type="password"
+                            id="confirmar"
+                            name="confirmar"
+                            placeholder="Digite novamente"
+                            maxlength="128"
+                            autocomplete="new-password"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <label class="terms">
+                    <input type="checkbox" id="termos" required>
+                    <span>
+                        Concordo com o uso dos meus dados para a
+                        finalidade de cadastro e utilização do Patas Unidas.
+                    </span>
+                </label>
+
+                <button class="submit-button" type="submit">
+                    Criar minha conta <span aria-hidden="true">→</span>
+                </button>
+
+                <div id="mensagem" class="message"
+                     role="status" aria-live="polite"></div>
+            </form>
+
+            <div class="form-footer">
+                Já possui uma conta?
+                <a href="login.html">Entrar na plataforma</a>
+            </div>
+
+            <div class="security-note">
+                <span aria-hidden="true">🔒</span>
+                Nunca compartilhe sua senha com outras pessoas.
+            </div>
+        </section>
+
+    </section>
+</main>
+
+<footer>
+    Patas Unidas © 2026 · Conectando animais a novos lares e reunindo famílias.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="supabase-app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const formulario = document.getElementById("formCadastro");
+    const mensagem = document.getElementById("mensagem");
+    const senha = document.getElementById("senha");
+    const confirmar = document.getElementById("confirmar");
+
+    function mostrarMensagem(texto, tipo) {
+        mensagem.textContent = texto;
+        mensagem.className = "message " + tipo;
+        mensagem.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    }
+
+    function verificarSenhas() {
+        if (confirmar.value && senha.value !== confirmar.value) {
+            confirmar.setCustomValidity("As senhas não são iguais.");
+        } else {
+            confirmar.setCustomValidity("");
+        }
+    }
+
+    senha.addEventListener("input", verificarSenhas);
+    confirmar.addEventListener("input", verificarSenhas);
+
+    formulario.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        verificarSenhas();
+
+        if (!formulario.checkValidity()) {
+            formulario.reportValidity();
+            return;
+        }
+
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const telefone = document.getElementById("telefone").value.trim();
+        const cidade = document.getElementById("cidade").value.trim();
+        const tipo = document.getElementById("tipo").value;
+        const senhaValor = senha.value;
+        const confirmarValor = confirmar.value;
+        const aceitouTermos = document.getElementById("termos").checked;
+
+        if (!nome || !email || !telefone || !cidade || !tipo) {
+            mostrarMensagem(
+                "Confira os campos e preencha todas as informações.",
+                "error"
+            );
+            return;
+        }
+
+        if (senhaValor.length < 6) {
+            mostrarMensagem(
+                "Sua senha precisa ter pelo menos 6 caracteres.",
+                "error"
+            );
+            return;
+        }
+
+        if (senhaValor !== confirmarValor) {
+            mostrarMensagem(
+                "As senhas não são iguais. Confira e tente novamente.",
+                "error"
+            );
+            confirmar.focus();
+            return;
+        }
+
+        if (!aceitouTermos) {
+            mostrarMensagem(
+                "Você precisa concordar com o uso dos dados para continuar.",
+                "error"
+            );
+            return;
+        }
+
+        const botao = formulario.querySelector('[type="submit"]');
+        botao.disabled = true;
+
+        try {
+            const { data, error } = await PatasApp.getClient().auth.signUp({
+                email: email,
+                password: senhaValor,
+                options: {
+                    data: {
+                        name: nome,
+                        phone: telefone,
+                        city: cidade,
+                        participation: tipo
+                    }
+                }
+            });
+
+            if (error) {
+                throw error;
+            }
+
+            mostrarMensagem(
+                data.session
+                    ? "Conta criada! Redirecionando para seus anúncios..."
+                    : "Cadastro realizado! Verifique seu e-mail para confirmar a conta antes de entrar.",
+                "success"
+            );
+
+            if (data.session) {
+                window.setTimeout(function () {
+                    window.location.href = "adocao.html#gerenciar";
+                }, 1200);
+            }
+        } catch (error) {
+            mostrarMensagem(PatasApp.errorMessage(error), "error");
+        } finally {
+            botao.disabled = false;
+        }
+    });
+});
+</script>
+
+</body>
+</html>

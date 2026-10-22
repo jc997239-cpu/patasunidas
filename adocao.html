@@ -1,0 +1,1245 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adoção | Patas Unidas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --azul: #6FA7A2;
+    --verde: #355843;
+    --verde-claro: #8AA58A;
+    --verde-escuro: #263F32;
+    --marrom: #987052;
+    --fundo: #DCE6D8;
+    --creme: #EAE4D7;
+    --menta: #D5E6E1;
+    --texto: #304638;
+    --suave: #68776B;
+    --borda: #C6D1C5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+header {
+    background: var(--verde-escuro);
+    color: var(--creme);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 5px 20px #263f321c;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 17px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--azul);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 21px;
+}
+
+.menu a {
+    font-size: 13px;
+    font-weight: 800;
+    color: #EAE4D7;
+    transition: .2s;
+}
+
+.menu a:hover,
+.menu a.ativo {
+    color: #A8D0C4;
+}
+
+.menu .botao-menu {
+    background: var(--azul);
+    color: var(--verde-escuro);
+    padding: 11px 18px;
+    border-radius: 30px;
+}
+
+.menu .botao-menu:hover {
+    background: var(--creme);
+}
+
+.menu-mobile {
+    display: none;
+    border: 0;
+    background: var(--verde);
+    color: var(--creme);
+    padding: 9px 13px;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.hero {
+    background: linear-gradient(125deg, #D5E6E1, #C6D9C4 55%, #B6CEC0);
+    padding: 65px 25px 60px;
+    overflow: hidden;
+}
+
+.hero-conteudo {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #B8D2C6;
+    color: var(--verde-escuro);
+    border-radius: 30px;
+    padding: 9px 15px;
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero h1 {
+    color: var(--verde-escuro);
+    font-size: clamp(34px, 4.4vw, 55px);
+    line-height: 1.15;
+    letter-spacing: -1.8px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--marrom);
+}
+
+.hero p {
+    color: #52685A;
+    line-height: 1.8;
+    font-size: 16px;
+    max-width: 560px;
+    margin-bottom: 27px;
+}
+
+.acoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-weight: 900;
+    border: none;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px #263f321a;
+}
+
+.botao-principal {
+    background: var(--verde);
+    color: var(--creme);
+}
+
+.botao-secundario {
+    background: var(--creme);
+    color: var(--verde-escuro);
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.ilustracao {
+    width: min(100%, 350px);
+    aspect-ratio: 1;
+    border-radius: 42% 58% 54% 46% / 45% 43% 57% 55%;
+    background: #A8C4B0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform: rotate(-3deg);
+    box-shadow: 0 20px 40px #35584318;
+}
+
+.ilustracao .pet {
+    font-size: 150px;
+    transform: rotate(3deg);
+}
+
+.mini-card {
+    position: absolute;
+    background: var(--creme);
+    border-radius: 20px;
+    padding: 13px 17px;
+    box-shadow: 0 10px 25px #263f321c;
+    color: var(--verde-escuro);
+    font-weight: 900;
+    font-size: 13px;
+    transform: rotate(3deg);
+}
+
+.mini-card.um {
+    top: 25px;
+    right: -12px;
+}
+
+.mini-card.dois {
+    bottom: 25px;
+    left: -15px;
+    transform: rotate(-4deg);
+}
+
+.estatisticas {
+    max-width: 1050px;
+    margin: -1px auto 0;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.estatistica {
+    background: #C9DCCB;
+    border-radius: 23px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.estatistica .emoji {
+    font-size: 29px;
+}
+
+.estatistica strong {
+    display: block;
+    color: var(--verde-escuro);
+    font-size: 14px;
+}
+
+.estatistica small {
+    color: var(--suave);
+    font-size: 12px;
+}
+
+.secao {
+    max-width: 1200px;
+    margin: auto;
+    padding: 55px 25px;
+}
+
+.cabecalho-secao {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cabecalho-secao .subtitulo {
+    color: var(--marrom);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+}
+
+.cabecalho-secao h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    color: var(--verde-escuro);
+    margin-bottom: 10px;
+}
+
+.cabecalho-secao p {
+    color: var(--suave);
+    line-height: 1.7;
+}
+
+.busca {
+    background: #CADBCB;
+    padding: 22px;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr auto;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.campo-busca {
+    background: var(--creme);
+    border: 1px solid var(--borda);
+    border-radius: 15px;
+    padding: 13px 15px;
+    min-width: 0;
+    outline: none;
+    color: var(--texto);
+}
+
+.campo-busca:focus,
+.campo:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px #6FA7A222;
+}
+
+.botao-busca {
+    border: 0;
+    border-radius: 15px;
+    background: var(--verde);
+    color: var(--creme);
+    padding: 13px 20px;
+    font-weight: 900;
+}
+
+.resultados {
+    color: var(--suave);
+    font-size: 13px;
+    margin: 0 0 17px 4px;
+}
+
+.grade-pets {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 23px;
+}
+
+.pet-card {
+    background: #D2E0D0;
+    border: 1px solid #C1D1C1;
+    border-radius: 27px;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.pet-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px #263f3217;
+}
+
+.pet-imagem {
+    height: 210px;
+    background: linear-gradient(135deg, #B7D1C2, #D9DCC2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.pet-imagem .emoji-pet {
+    font-size: 100px;
+    filter: drop-shadow(0 8px 5px #263f3214);
+}
+
+.tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--verde);
+    color: var(--creme);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.pet-conteudo {
+    padding: 21px;
+}
+
+.pet-topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.pet-topo h3 {
+    font-size: 21px;
+    color: var(--verde-escuro);
+}
+
+.idade {
+    color: var(--marrom);
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+    padding-top: 5px;
+}
+
+.local {
+    font-size: 13px;
+    color: var(--suave);
+    margin-bottom: 13px;
+}
+
+.descricao {
+    color: #596B5D;
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 70px;
+    margin-bottom: 16px;
+}
+
+.caracteristicas {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-bottom: 19px;
+}
+
+.caracteristicas span {
+    background: #BFD4C3;
+    color: var(--verde-escuro);
+    padding: 7px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.botao-adotar {
+    display: block;
+    text-align: center;
+    width: 100%;
+    background: var(--verde);
+    color: var(--creme);
+    padding: 13px;
+    border-radius: 15px;
+    font-weight: 900;
+    border: none;
+    transition: .2s;
+}
+
+.botao-adotar:hover {
+    background: var(--verde-escuro);
+}
+
+.sem-resultados {
+    display: none;
+    background: #CADBCB;
+    padding: 35px;
+    border-radius: 22px;
+    text-align: center;
+    color: var(--suave);
+    grid-column: 1 / -1;
+}
+
+.sem-resultados strong {
+    display: block;
+    font-size: 18px;
+    color: var(--verde-escuro);
+    margin-bottom: 8px;
+}
+
+.faixa {
+    max-width: 1150px;
+    margin: 15px auto 55px;
+    padding: 40px;
+    border-radius: 30px;
+    background: var(--verde-escuro);
+    color: var(--creme);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.faixa h2 {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.faixa p {
+    color: #D1DCCE;
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+.faixa .botao {
+    background: var(--azul);
+    color: var(--verde-escuro);
+    white-space: nowrap;
+}
+
+footer {
+    background: var(--verde-escuro);
+    color: var(--creme);
+    padding: 30px 25px;
+}
+
+.footer-conteudo {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-conteudo p {
+    color: #C3D0C2;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: var(--azul);
+}
+
+.gerencia {
+    max-width: 1150px;
+    margin: 0 auto 55px;
+    padding: 35px;
+    border-radius: 25px;
+    background: #F0F4EC;
+}
+
+.form-animal {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 20px 0 30px;
+}
+
+.form-animal label {
+    display: grid;
+    gap: 7px;
+    color: var(--verde-escuro);
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.form-animal input,
+.form-animal select,
+.form-animal textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #CAD8CB;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--verde-escuro);
+    font: inherit;
+}
+
+.form-animal textarea,
+.form-animal .campo-completo {
+    grid-column: 1 / -1;
+}
+
+.form-animal button {
+    justify-self: start;
+}
+
+.mensagem-gerencia {
+    display: none;
+    margin: 12px 0;
+    color: var(--verde-escuro);
+}
+
+.mensagem-gerencia.error {
+    color: #A32626;
+}
+
+.anuncio-proprio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid #CAD8CB;
+}
+
+.anuncio-proprio button {
+    margin-left: 8px;
+}
+
+@media (max-width: 900px) {
+    .menu {
+        gap: 12px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .hero-conteudo {
+        gap: 20px;
+    }
+
+    .busca {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grade-pets {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 15px 18px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--verde-escuro);
+        padding: 18px 22px 24px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .menu.aberto {
+        display: flex;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+
+    .menu .botao-menu {
+        text-align: center;
+    }
+
+    .hero {
+        padding: 45px 20px;
+    }
+
+    .hero-conteudo {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 37px;
+    }
+
+    .hero-visual {
+        min-height: 260px;
+    }
+
+    .ilustracao {
+        width: 260px;
+    }
+
+    .ilustracao .pet {
+        font-size: 115px;
+    }
+
+    .estatisticas {
+        grid-template-columns: 1fr;
+        padding: 18px 20px;
+    }
+
+    .secao {
+        padding: 40px 18px;
+    }
+
+    .busca {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .grade-pets {
+        grid-template-columns: 1fr;
+    }
+
+    .gerencia {
+        margin: 0 18px 40px;
+        padding: 22px;
+    }
+
+    .form-animal {
+        grid-template-columns: 1fr;
+    }
+
+    .form-animal textarea,
+    .form-animal .campo-completo {
+        grid-column: auto;
+    }
+
+    .anuncio-proprio {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .pet-imagem {
+        height: 230px;
+    }
+
+    .faixa {
+        margin: 10px 18px 40px;
+        padding: 27px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .faixa h2 {
+        font-size: 23px;
+    }
+
+    .footer-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">🐾 Patas <span>Unidas</span></a>
+
+        <button class="menu-mobile" id="menuMobile" aria-label="Abrir menu">☰</button>
+
+        <div class="menu" id="menu">
+            <a href="index.html">Início</a>
+            <a href="adocao.html" class="ativo">Adoção</a>
+            <a href="perdidos.html">Perdidos</a>
+            <a href="encontrados.html">Encontrados</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="login.html" class="botao-menu">Entrar</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-conteudo">
+            <div>
+                <span class="etiqueta">🐾 ADOÇÃO RESPONSÁVEL</span>
+
+                <h1>Seu novo melhor amigo está <span>aqui!</span></h1>
+
+                <p>
+                    Existem muitos animais esperando por uma família.
+                    Encontre seu companheiro, conheça sua história e transforme
+                    uma vida com carinho, cuidado e amor.
+                </p>
+
+                <div class="acoes">
+                    <a href="#pets" class="botao botao-principal">Encontrar meu pet ♥</a>
+                    <a href="#como-adotar" class="botao botao-secundario">Como funciona?</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="ilustracao">
+                    <span class="pet">🐶</span>
+                    <div class="mini-card um">💚 Amor para toda a vida</div>
+                    <div class="mini-card dois">🏡 Um lar cheio de carinho</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="estatisticas">
+        <div class="estatistica">
+            <span class="emoji">🐕</span>
+            <div>
+                <strong>Amigos esperando</strong>
+                <small>Conheça os pets disponíveis</small>
+            </div>
+        </div>
+
+        <div class="estatistica">
+            <span class="emoji">💚</span>
+            <div>
+                <strong>Adoção responsável</strong>
+                <small>Uma decisão para a vida toda</small>
+            </div>
+        </div>
+
+        <div class="estatistica">
+            <span class="emoji">🏡</span>
+            <div>
+                <strong>Novas famílias</strong>
+                <small>Mais amor e companheirismo</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao" id="pets">
+        <div class="cabecalho-secao">
+            <div class="subtitulo">ENCONTRE SEU COMPANHEIRO</div>
+            <h2>Pets esperando por você 🐾</h2>
+            <p>Pesquise e conheça os animais que estão procurando um lar.</p>
+        </div>
+
+        <div class="busca">
+            <input
+                type="text"
+                id="pesquisa"
+                class="campo-busca"
+                placeholder="🔎 Nome ou característica do pet..."
+            >
+
+            <select id="tipo" class="campo-busca">
+                <option value="">Todos os animais</option>
+                <option value="cachorro">Cachorros</option>
+                <option value="gato">Gatos</option>
+                <option value="outro">Outros</option>
+            </select>
+
+            <input
+                type="text"
+                id="cidade"
+                class="campo-busca"
+                placeholder="📍 Cidade ou bairro"
+            >
+
+            <button class="botao-busca" id="buscar">Buscar pets</button>
+        </div>
+
+        <p class="resultados" id="contador">3 animais disponíveis para conhecer.</p>
+
+        <div class="grade-pets" id="gradePets">
+            <div class="sem-resultados" id="semResultados">
+                <strong>😿 Nenhum pet encontrado</strong>
+                Tente pesquisar outro nome, tipo de animal ou cidade.
+            </div>
+        </div>
+    </section>
+
+    <section class="gerencia" id="gerenciar">
+        <div class="cabecalho-secao">
+            <div class="subtitulo">ÁREA DO RESPONSÁVEL</div>
+            <h2>Gerencie seus anúncios</h2>
+            <p>Entre na sua conta para publicar e acompanhar seus animais.</p>
+        </div>
+        <p id="loginGerencia">Para gerenciar anúncios, <a href="login.html">entre na sua conta</a>.</p>
+        <form class="form-animal" id="formAdocao" style="display:none">
+            <label>Nome do animal
+                <input name="petName" maxlength="100" required>
+            </label>
+            <label>Tipo de animal
+                <select name="petType" required>
+                    <option value="">Selecione</option>
+                    <option value="Cachorro">Cachorro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </label>
+            <label>Cidade
+                <input name="city" maxlength="100" required>
+            </label>
+            <label>Bairro
+                <input name="neighborhood" maxlength="100" required>
+            </label>
+            <label>Características
+                <input name="characteristics" maxlength="200" placeholder="Porte, idade, temperamento..." required>
+            </label>
+            <label>Seu nome
+                <input name="contactName" maxlength="100" required>
+            </label>
+            <label>Contato para interessados
+                <input name="contactInfo" maxlength="150" placeholder="Telefone ou e-mail" required>
+            </label>
+            <label class="campo-completo">História e informações adicionais
+                <textarea name="description" maxlength="2000" rows="4"></textarea>
+            </label>
+            <button class="botao-busca" type="submit">Publicar para adoção</button>
+        </form>
+        <div id="mensagemAdocao" class="mensagem-gerencia" role="status"></div>
+        <h3 id="tituloMeusAnuncios" style="display:none">Meus anúncios</h3>
+        <div id="meusAnuncios"></div>
+    </section>
+
+    <section class="secao" id="como-adotar">
+        <div class="cabecalho-secao">
+            <div class="subtitulo">SIMPLES E COM RESPONSABILIDADE</div>
+            <h2>Como funciona a adoção?</h2>
+            <p>Três passos para começar uma nova história de amor.</p>
+        </div>
+
+        <div class="grade-pets">
+            <article class="pet-card">
+                <div class="pet-imagem">
+                    <span class="emoji-pet">🔎</span>
+                </div>
+                <div class="pet-conteudo">
+                    <div class="pet-topo"><h3>01. Escolha</h3></div>
+                    <p class="descricao">
+                        Conheça os animais disponíveis e escolha aquele
+                        que combina com sua rotina e sua família.
+                    </p>
+                </div>
+            </article>
+
+            <article class="pet-card">
+                <div class="pet-imagem">
+                    <span class="emoji-pet">💬</span>
+                </div>
+                <div class="pet-conteudo">
+                    <div class="pet-topo"><h3>02. Converse</h3></div>
+                    <p class="descricao">
+                        Entre em contato com o responsável pelo animal
+                        para saber mais sobre sua história e seus cuidados.
+                    </p>
+                </div>
+            </article>
+
+            <article class="pet-card">
+                <div class="pet-imagem">
+                    <span class="emoji-pet">🏡</span>
+                </div>
+                <div class="pet-conteudo">
+                    <div class="pet-topo"><h3>03. Acolha</h3></div>
+                    <p class="descricao">
+                        Prepare sua casa, ofereça os cuidados necessários
+                        e dê ao novo amigo um lar seguro e cheio de amor.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="faixa">
+        <div>
+            <h2>Quer colocar um animal para adoção? 🐾</h2>
+            <p>
+                Ajude um pet a encontrar uma família responsável.
+                Cadastre-se para dar visibilidade à história dele.
+            </p>
+        </div>
+        <a href="cadastro.html" class="botao">Cadastrar-se ♥</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-conteudo">
+        <div>
+            <a href="index.html" class="logo">🐾 Patas <span>Unidas</span></a>
+            <p>Conectando animais a novos lares e reunindo famílias.</p>
+            <p>© <span id="ano"></span> Patas Unidas.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Início</a>
+            <a href="adocao.html">Adoção</a>
+            <a href="perdidos.html">Perdidos</a>
+            <a href="encontrados.html">Encontrados</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="supabase-app.js"></script>
+<script>
+const menuMobile = document.getElementById("menuMobile");
+const menu = document.getElementById("menu");
+
+menuMobile.addEventListener("click", function () {
+    menu.classList.toggle("aberto");
+});
+
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+const pesquisa = document.getElementById("pesquisa");
+const tipo = document.getElementById("tipo");
+const cidade = document.getElementById("cidade");
+const buscar = document.getElementById("buscar");
+let pets = [];
+const contador = document.getElementById("contador");
+const semResultados = document.getElementById("semResultados");
+
+function normalizar(texto) {
+    return texto
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
+function filtrarPets() {
+    const nomePesquisa = normalizar(pesquisa.value.trim());
+    const tipoPesquisa = tipo.value;
+    const cidadePesquisa = normalizar(cidade.value.trim());
+
+    let encontrados = 0;
+
+    pets.forEach(function (pet) {
+        const nome = normalizar(pet.dataset.nome);
+        const tipoPet = pet.dataset.tipo;
+        const local = normalizar(pet.dataset.cidade);
+
+        const combinaNome = nome.includes(nomePesquisa);
+        const combinaTipo = tipoPesquisa === "" || tipoPet === tipoPesquisa;
+        const combinaCidade = local.includes(cidadePesquisa);
+
+        if (combinaNome && combinaTipo && combinaCidade) {
+            pet.style.display = "";
+            encontrados++;
+        } else {
+            pet.style.display = "none";
+        }
+    });
+
+    contador.textContent = encontrados === 1
+        ? "1 animal encontrado."
+        : encontrados + " animais encontrados.";
+
+    semResultados.style.display = encontrados === 0 ? "block" : "none";
+}
+
+buscar.addEventListener("click", filtrarPets);
+
+pesquisa.addEventListener("input", filtrarPets);
+tipo.addEventListener("change", filtrarPets);
+cidade.addEventListener("input", filtrarPets);
+
+const gradePets = document.getElementById("gradePets");
+const formularioAdocao = document.getElementById("formAdocao");
+const mensagemAdocao = document.getElementById("mensagemAdocao");
+const listaMeusAnuncios = document.getElementById("meusAnuncios");
+const loginGerencia = document.getElementById("loginGerencia");
+const tituloMeusAnuncios = document.getElementById("tituloMeusAnuncios");
+
+gradePets.addEventListener("click", async function (event) {
+    const button = event.target.closest(".botao-adotar");
+    if (!button) {
+        return;
+    }
+    button.disabled = true;
+    try {
+        const contact = await PatasApp.getListingContact(button.dataset.listingId);
+        alert("Contato de " + button.dataset.pet + ":\n" +
+            contact.contact_name + "\n" + contact.contact_info);
+    } catch (error) {
+        alert(PatasApp.errorMessage(error));
+    } finally {
+        button.disabled = false;
+    }
+});
+
+formularioAdocao.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    if (!formularioAdocao.checkValidity()) {
+        formularioAdocao.reportValidity();
+        return;
+    }
+
+    const button = formularioAdocao.querySelector('[type="submit"]');
+    button.disabled = true;
+    const fields = new FormData(formularioAdocao);
+    try {
+        await PatasApp.requireUser();
+        const { error } = await PatasApp.getClient()
+            .rpc("create_animal_listing", {
+                p_category: "adoption",
+                p_pet_name: fields.get("petName").trim(),
+                p_pet_type: fields.get("petType"),
+                p_characteristics: fields.get("characteristics").trim(),
+                p_city: fields.get("city").trim(),
+                p_neighborhood: fields.get("neighborhood").trim(),
+                p_contact_name: fields.get("contactName").trim(),
+                p_contact_info: fields.get("contactInfo").trim(),
+                p_event_date: null,
+                p_event_time: null,
+                p_description: fields.get("description").trim()
+            });
+        if (error) {
+            throw error;
+        }
+        PatasApp.showMessage(mensagemAdocao, "Animal publicado para adoção.", false);
+        formularioAdocao.reset();
+        await refreshAdoptions();
+        await refreshOwnListings();
+    } catch (error) {
+        PatasApp.showMessage(mensagemAdocao, PatasApp.errorMessage(error), true);
+    } finally {
+        button.disabled = false;
+    }
+});
+
+async function refreshAdoptions() {
+    try {
+        const listings = await PatasApp.loadListings("adoption");
+        gradePets.querySelectorAll(".pet-card[data-nome]").forEach(function (card) {
+            card.remove();
+        });
+        semResultados.innerHTML =
+            "<strong>😿 Nenhum pet encontrado</strong>" +
+            "Tente pesquisar outro nome, tipo de animal ou cidade.";
+        listings.forEach(function (listing) {
+            semResultados.insertAdjacentHTML(
+                "beforebegin",
+                PatasApp.createListingCard(listing, "adoption")
+            );
+        });
+        pets = gradePets.querySelectorAll(".pet-card[data-nome]");
+        semResultados.style.display = listings.length ? "none" : "block";
+        filtrarPets();
+    } catch (error) {
+        semResultados.style.display = "block";
+        semResultados.innerHTML = "<strong>Não foi possível carregar os anúncios</strong>" +
+            PatasApp.escapeHtml(PatasApp.errorMessage(error));
+        contador.textContent = "Erro ao carregar anúncios.";
+    }
+}
+
+async function refreshOwnListings() {
+    try {
+        const user = await PatasApp.getCurrentUser();
+        if (!user) {
+            loginGerencia.style.display = "block";
+            formularioAdocao.style.display = "none";
+            tituloMeusAnuncios.style.display = "none";
+            listaMeusAnuncios.replaceChildren();
+            return;
+        }
+
+        loginGerencia.style.display = "none";
+        formularioAdocao.style.display = "grid";
+        tituloMeusAnuncios.style.display = "block";
+        const { data, error } = await PatasApp.getClient()
+            .from("animal_listings")
+            .select("id, pet_name, category, status")
+            .eq("owner_id", user.id)
+            .order("created_at", { ascending: false });
+        if (error) {
+            throw error;
+        }
+
+        listaMeusAnuncios.innerHTML = data.map(function (listing) {
+            const status = listing.status === "active" ? "Ativo" : "Encerrado";
+            const category = listing.category === "adoption"
+                ? "Adoção"
+                : listing.category === "lost" ? "Perdido" : "Encontrado";
+            return '<div class="anuncio-proprio"><span>' +
+                PatasApp.escapeHtml(listing.pet_name) + " · " + category +
+                " · " + status + '</span><span>' +
+                (listing.status === "active"
+                    ? '<button type="button" data-action="resolve" data-id="' +
+                        listing.id + '">Encerrar</button>'
+                    : "") +
+                '<button type="button" data-action="delete" data-id="' +
+                listing.id + '">Excluir</button></span></div>';
+        }).join("");
+    } catch (error) {
+        loginGerencia.style.display = "block";
+        PatasApp.showMessage(mensagemAdocao, PatasApp.errorMessage(error), true);
+    }
+}
+
+listaMeusAnuncios.addEventListener("click", async function (event) {
+    const button = event.target.closest("button[data-action]");
+    if (!button) {
+        return;
+    }
+    button.disabled = true;
+    try {
+        const client = PatasApp.getClient();
+        const result = button.dataset.action === "resolve"
+            ? await client.from("animal_listings")
+                .update({ status: "resolved" })
+                .eq("id", button.dataset.id)
+                .select("id")
+                .maybeSingle()
+            : await client.from("animal_listings")
+                .delete()
+                .eq("id", button.dataset.id)
+                .select("id")
+                .maybeSingle();
+        if (result.error) {
+            throw result.error;
+        }
+        if (!result.data) {
+            throw new Error("O anúncio não foi encontrado ou você não tem permissão para alterá-lo.");
+        }
+        await refreshOwnListings();
+        await refreshAdoptions();
+    } catch (error) {
+        PatasApp.showMessage(mensagemAdocao, PatasApp.errorMessage(error), true);
+    } finally {
+        button.disabled = false;
+    }
+});
+
+refreshAdoptions();
+refreshOwnListings();
+</script>
+
+</body>
+</html>
